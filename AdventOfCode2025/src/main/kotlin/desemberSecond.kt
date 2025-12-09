@@ -16,39 +16,59 @@ fun desemberSecond1() {
                     val second = i.toString().substring(mid)
                     if (first==second){
                         sum+=i
-                        println(sum)
                     }
             }
             }
+        }
+        println("PART 1: "+sum)}}
 
-        }}}
+fun isInvalidId(id: Long): Boolean {
+    val s = id.toString()
+    val n = s.length
+    for (blockLen in 1..(n / 2)) {
+        if (n % blockLen != 0) continue
+        val block = s.substring(0, blockLen)
+        var ok = true
+        var idx = 0
+        while (idx < n) {
+            if (!s.startsWith(block, idx)) {
+                ok = false
+                break
+            }
+            idx += blockLen
+        }
+        if (ok) {
+            return true
+        }
+    }
+    return false
+}
+
 fun desemberSecond2() {
     val file = File("/Users/vetledrage/Documents/AdventsKalender/AdventOfCode2025/src/main/kotlin/input2.csv")
     var sum = 0L
     file.forEachLine { line ->
         if (line.isNotBlank()) {
-            val range = line.split(",")
-            for (x in range){
-                val numbers = x.split("-")
-                val number1 =numbers[0].toLong()
-                val number2 = numbers[1].toLong()
-                for (i in number1..number2) {
-                    val numberStr = i.toString()
-                    val size = numberStr.length
-                    for (x in 1..size) {
-                        if (x > size / 2) break
-                        if (size % x != 0) continue
-                        val block = numberStr.substring(0, x)
-                        //for (i in )
-
+            val ranges = line.split(",")
+            for (range in ranges) {
+                if (range.isBlank()) continue
+                val parts = range.split("-")
+                val start = parts[0].toLong()
+                val end = parts[1].toLong()
+                for (id in start..end) {
+                    if (isInvalidId(id)) {
+                        sum += id
                     }
                 }
             }
         }
     }
+
+    println("PART 2: "+sum)
 }
+
 fun main() {
-    //desemberSecond1()
+    desemberSecond1()
     desemberSecond2()
 }
 
