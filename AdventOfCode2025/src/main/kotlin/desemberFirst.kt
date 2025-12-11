@@ -28,9 +28,7 @@ fun desemberFirst2() {
         if (line.isNotBlank()) {
             val direction = line.first()
             val steps = line.drop(1).toInt()
-
             val delta = if (direction == 'R') 1 else -1
-
             repeat(steps) {
                 pos = (pos + delta).mod(100)
                 if (pos == 0) counter++
