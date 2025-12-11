@@ -2,20 +2,16 @@ import java.io.File
 
 fun desemberFourth1() {
     val file = File("/Users/vetledrage/Documents/GitHub/AdventOfCode2025/AdventOfCode2025/src/main/kotlin/input4.csv")
-
     var array1: Array<String>? = null // top row
     var array2: Array<String>? = null // middle row
     var array3: Array<String>? = null // bottom row
-
     var counter = 0
-
     file.forEachLine { line ->
         if (line.isNotBlank()) {
             val newRow = line.map { it.toString() }.toTypedArray()
             array3 = array2   // old middle becomes bottom
             array2 = array1   // old top becomes middle
             array1 = newRow   // new row becomes top
-
             // Only start checking when we have 3 rows
             if (array1 != null && array2 != null && array3 != null) {
                 val top = array1!!
