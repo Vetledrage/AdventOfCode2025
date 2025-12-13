@@ -47,7 +47,6 @@ fun main() {
 //GPT solution
 fun desemberFourth3() {
     val file = File("/Users/vetledrage/Documents/GitHub/AdventOfCode2025/AdventOfCode2025/src/main/kotlin/input4.csv")
-
     // Read full input into a grid
     val grid = file.readLines().filter { it.isNotBlank() }
         .map { line -> line.toCharArray().toTypedArray() }

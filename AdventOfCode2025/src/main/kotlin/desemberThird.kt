@@ -1,41 +1,58 @@
 import java.io.File
+import java.math.BigInteger
 
 fun desemberThird1() {
     val file = File("/Users/vetledrage/Documents/AdventsKalender/AdventOfCode2025/src/main/kotlin/input3.csv")
-    var sum=0
+    var sum = 0
     file.forEachLine { line ->
         if (line.isNotBlank()) {
-            val digits: List<Int> = line.map { it.digitToInt() }
-            var biggest1 = digits.last()
-            var biggest2 = Int.MIN_VALUE
-            var array1= 0
-            var array2= 0
-            for (i in digits.lastIndex downTo 0) {
-                val x = digits[i]                     // digit at position i
-                if (x >= biggest1) {
-                    biggest2 = biggest1
-                    array2= array1
-                    biggest1 = x
-                    array1=i
-                }
-                else if (x > biggest2){
-                    biggest2=x
-                    array2=i
+            val digits = line.map { it.digitToInt() }
+            var maxJoltage = 0
+            for (i in 0 until digits.size - 1) {
+                for (j in i + 1 until digits.size) {
+                    val value = digits[i] * 10 + digits[j]
+                    if (value > maxJoltage) {
+                        maxJoltage = value
+                    }
                 }
             }
-            if (array2 <array1){
-                val value = "$biggest1$biggest2".toInt()
-                sum+=value
-            }
-            else if (array1<array2){
-                val value = "$biggest2$biggest1".toInt()
-                sum+=value
-            }
-            println(sum)
+            sum += maxJoltage
         }
     }
+
+    println(sum)
 }
+
+fun desemberThird2() {
+    val file = File("/Users/vetledrage/Documents/AdventsKalender/AdventOfCode2025/src/main/kotlin/input3.csv")
+    var total = BigInteger.ZERO
+    file.forEachLine { line ->
+        if (line.isNotBlank()) {
+            val digits = line.map { it }
+            val toRemove = digits.size - 12
+            var removalsLeft = toRemove
+            val stack = ArrayDeque<Char>()
+            for (d in digits) {
+                while (
+                    stack.isNotEmpty() &&
+                    removalsLeft > 0 &&
+                    stack.last() < d
+                ) {
+                    stack.removeLast()
+                    removalsLeft--
+                }
+                stack.addLast(d)
+            }
+            val resultDigits = stack.take(12).joinToString("")
+            total += BigInteger(resultDigits)
+        }
+    }
+
+    println(total)
+}
+
 
 fun main() {
     desemberThird1()
+    desemberThird2()
 }
