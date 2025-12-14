@@ -2,7 +2,7 @@ import java.io.File
 import java.math.BigInteger
 
 fun desemberThird1() {
-    val file = File("/Users/vetledrage/Documents/AdventsKalender/AdventOfCode2025/src/main/kotlin/input3.csv")
+    val file = File("src/main/kotlin/input3.csv")
     var sum = 0
     file.forEachLine { line ->
         if (line.isNotBlank()) {
@@ -24,7 +24,7 @@ fun desemberThird1() {
 }
 
 fun desemberThird2() {
-    val file = File("/Users/vetledrage/Documents/AdventsKalender/AdventOfCode2025/src/main/kotlin/input3.csv")
+    val file = File("src/main/kotlin/input3.csv")
     var total = BigInteger.ZERO
     file.forEachLine { line ->
         if (line.isNotBlank()) {

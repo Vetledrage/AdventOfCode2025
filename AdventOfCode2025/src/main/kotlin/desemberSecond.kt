@@ -1,7 +1,7 @@
 import java.io.File
 
 fun desemberSecond1() {
-    val file = File("/Users/vetledrage/Documents/AdventsKalender/AdventOfCode2025/src/main/kotlin/input2.csv")
+    val file = File("src/main/kotlin/input2.csv")
     var sum = 0L
     file.forEachLine { line ->
         if (line.isNotBlank()) {
@@ -45,7 +45,7 @@ fun isInvalidId(id: Long): Boolean {
 }
 
 fun desemberSecond2() {
-    val file = File("/Users/vetledrage/Documents/AdventsKalender/AdventOfCode2025/src/main/kotlin/input2.csv")
+    val file = File("src/main/kotlin/input2.csv")
     var sum = 0L
     file.forEachLine { line ->
         if (line.isNotBlank()) {

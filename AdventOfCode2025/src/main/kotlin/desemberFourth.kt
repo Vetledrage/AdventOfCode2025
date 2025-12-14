@@ -1,7 +1,7 @@
 import java.io.File
 
 fun desemberFourth1() {
-    val file = File("/Users/vetledrage/Documents/GitHub/AdventOfCode2025/AdventOfCode2025/src/main/kotlin/input4.csv")
+    val file = File("src/main/kotlin/input4.csv")
     var array1: Array<String>? = null // top row
     var array2: Array<String>? = null // middle row
     var array3: Array<String>? = null // bottom row
@@ -46,7 +46,7 @@ fun main() {
 }
 //GPT solution
 fun desemberFourth3() {
-    val file = File("/Users/vetledrage/Documents/GitHub/AdventOfCode2025/AdventOfCode2025/src/main/kotlin/input4.csv")
+    val file = File("src/main/kotlin/input4.csv")
     // Read full input into a grid
     val grid = file.readLines().filter { it.isNotBlank() }
         .map { line -> line.toCharArray().toTypedArray() }

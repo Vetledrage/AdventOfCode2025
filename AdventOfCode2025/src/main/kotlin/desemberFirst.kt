@@ -1,7 +1,7 @@
 import java.io.File
 
 fun desemberFirst1() {
-    val file = File("/Users/vetledrage/Documents/AdventsKalender/AdventOfCode2025/src/main/kotlin/input.csv")
+    val file = File("src/main/kotlin/input.csv")
     var sum = 50
     var counter = 0
     file.forEachLine { line ->
@@ -21,7 +21,7 @@ fun desemberFirst1() {
 }
 
 fun desemberFirst2() {
-    val file = File("/Users/vetledrage/Documents/AdventsKalender/AdventOfCode2025/src/main/kotlin/input.csv")
+    val file = File("src/main/kotlin/input.csv")
     var pos = 50
     var counter = 0
     file.forEachLine { line ->
